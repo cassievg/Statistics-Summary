@@ -118,6 +118,13 @@ Alternative hypothesis (H1) = Claim being made
 6. T-table for df and a, obtain critical value +-
 7. If t-statistic is within range of +- critical value, fail to reject null hypothesis
 
+Paired T-Test
+1. Obtain differences d
+2. Calculate mean of d
+3. Calculate sd of d = sqr( sum of (di - mean) / sample size - 1 )
+4. T-statistic = Mean / (sd / sqr(sample size))
+5. If < critical, reject null
+
 Independent T-Test
 State hypothesis
 Given 2 groups
