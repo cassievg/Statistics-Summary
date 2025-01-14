@@ -196,5 +196,10 @@ State hypothesis
    B use FB and df (dfB, dfW)
    Interaction use FAB and df (dfI, dfW)
 7. If F > critical, reject null
-   
+
+Rejecting and accepting
+P-value: If > alpha, fail to reject
+T-statistic: If < critical, fail to reject
+F-statistic: If < critical, fail to reject
+
 THE END GOOD LUCK HAVE FUN
