@@ -1,0 +1,193 @@
+AtoZmath
+
+Stem and Leaf
+E.g:
+60, 61, 72, 73, 84, 85
+Stem | Leaf
+6    | 0 1
+7    | 2 3
+8    | 4 5
+
+Box Plot
+H-spread = Q3 - Q1
+Step = 1.5 * H-spread
+Upper inner fence = Q3 + Step
+Lower inner fence = Q1 - Step
+If max/min exceed range upper-lower, outlier
+
+Trimean
+(Q1 + 2 * Median + Q3) / 4
+
+Geometric Mean
+Add all percentage by 1
+GM = root by the number of years sqr(multiply all the percentage that’s already been added 1)
+Convert GM back to percentage by -1
+
+Trimmed Mean
+Let’s say, 10 data and given trimmed mean by 10%
+Remove 10% of 10 is 1, so remove 1 data from top and bottom
+So remove min and max
+Calculate mean as per usual
+
+Hypergeometric Formula
+Probability for successes when draws are made without replacements
+p = ( kCx (N-k)C(n-x) ) / NCn
+N = Total population
+k = Total of the one we want
+n = Amount selected
+x = Amount we want
+E.g:
+A bag contains 10 red balls and 15 blue balls. if you randomly select 5 balls without replacement, what is the probability that exactly 3 of the selected balls are red?
+N = 25
+k = 10
+n = 5
+x = 3
+Then just put in the formula
+
+Binomial Distribution - Probability
+P(x = ?) = ( N! / x!(N-x)! ) * pi^x * ( 1 - pi )^N-x
+N = Number of trials
+x = Number of successes
+pi = Probability of a success
+E.g:
+Calculate the probability of getting exactly 3 heads when flipping a fair coin 5 times (where getting heads is considered a success)
+N = 5
+x = 3
+pi = 0.5
+Then just put in the formula
+E.g:
+In a basketball game, a player has a free throw success rate of 80%. If the player takes 15 free throws, what is the probability that they make at least 12 successful free throws?
+P(x ≥ 12) = P(x = 12) + P(x = 13) + P(x = 14) + P(x = 15)
+
+Pearson's Correlation Coefficient
+Formula = (∑xy)/√(∑x^2∑y^2)
+Given the table columns are X and Y
+x = X - X mean
+y = Y - Y mean
+E.g:
+      X  Y  x  y  xy  x^2  y^2
+      2 10 -4 -10 40 16 100
+      4 15 -2 -5 10 4 25
+      6 20 0 0 0 0 0
+      8 25 2 5 10 4 25
+      10 30 4 10 40 16 100
+Total 30 100 0 0 100 40 250
+Mean   6 20 0 0
+Calculating
+r = (∑xy)/√(∑x^2∑y^2) = 100/√(40 * 250)
+
+Standard Deviation
+1. Calculate mean
+2. Deviation of each score = Each data - mean
+3. Squared deviations = Square each of the deviation of each score
+4. Variance = Mean of squared deviations
+5. Standard deviation = square root (sqr) of variance
+
+Z-Table
+Given n p q:
+n = Number of samples
+p = Probability of success
+q = Probability of failure (1-p)
+1. Get n p q
+2. Check conditions:
+   n * p > 5
+   n * q > 5
+   If both > 5, normal approximation can be used
+3. Calculate mean = np
+4. Calculate standard deviation = sqr(npq)
+5. Continuity correction (-0.5) for P(x < ?)
+   E.g:
+   Suppose a survey indicates that 30% of people prefer coffee over tea. If you randomly select 100 people, what is the probability that fewer than 25 people prefer coffee? Use z-table
+   We want P(x < 25) so continuity correction is P(x <= 24.5)
+6. Standardize (from example):
+   Z = (24.5 - 30) / Standard deviation
+7. Find z-score in z-table, that's the probability
+Probability in z-table always P(Z <= ?)
+For P(Z => ?), just 1 - P(x <= ?)
+
+T-Test
+One-tailed = Mention either increase or decrease
+Two-tailed = Change, can be increase or decrease, difference
+Null hypothesis (H0) = No significant difference
+Alternative hypothesis (H1) = Claim being made
+1. State hypotheses
+2. Calculate mean
+3. Calculate standard deviation (use online calculator, sample)
+4. T-statistic formula = ( Mean - Assumed mean ) / ( Standard deviation / sqr( Sample size )
+5. Degrees of freedom = Sample size - 1
+6. T-table for df and a, obtain critical value +-
+7. If t-statistic is within range of +- critical value, fail to reject null hypothesis
+
+Independent T-Test
+State hypothesis
+Given 2 groups
+E.g:
+Group                 Sample Size (n) Mean Weight Loss (x) Standard Deviation (s)
+Group A (New)         25              8 kg                 2
+Group B (Standard)    25              6 kg                 2.5
+T-statistic formula = (xA - xB) / sqr((sA^2 / nA) + (sB^2 / nB))
+Degrees of freedom = nA + nB - 2
+If t > critical, reject
+But be careful with the question
+
+One-Way ANOVA Test
+State hypothesis
+1. Calculate grand mean
+2. Calculate group means
+3. Total sum of squares (SST) = (data - grand mean)^2 + (data - grand mean)^2 + ... + (data - grand mean)^2 -> For literally ALL
+4. Between-Groups Sum of Squares (SSB) = rows * ((group mean - grand mean)^2 + (group mean - grand mean)^2 + ... + (group mean - grand mean)^2)
+   Rows is the number of samples for each group, usually same number
+5. Within-Groups Sum of Squares (SSW) = SST - SSB
+6. Degree of freedom (df)
+   dfbetween = columns - 1
+   dfwithin = Total sample - columns
+7. Mean squares (MS)
+   MSbetween = SSB/dfB
+   MSwithin = SSW/dfW
+8. F-statistic = MSB/MSW
+9. Find critical value with dfB and dfW
+10. If > critical, reject null
+
+Chi-Square Test
+State hypothesis
+1. Expected frequency = (Row total * Column total) / Grand total
+2. Replace each cell in the table with expected frequency
+3. For each cell = (Original - Expected)^2 / Expected
+4. Sum everything from 3 -> Chi-square value
+5. Degrees of freedom (df) = (Rows - 1) * (Columns - 1)
+   If x^2 ≤ critical, fail to reject H0
+
+Two-Way ANOVA Test
+State hypothesis
+1. Calculate grand mean
+2. Find mean for row, column, and each cell
+3. Sum of squares
+   Per row (SSA):
+   Total sample per row * (Mean of row - Grand mean)^2 + Total sample per row * (Mean of row - Grand mean)^2 + ... + Total sample per row * (Mean of row - Grand mean)^2
+   Per column (SSB):
+   Total sample per column * (Mean of column - Grand mean)^2 + Total sample per column * (Mean of column - Grand mean)^2 + ... + Total sample per column * (Mean of column - Grand mean)^2
+   Sum of squares within error (SSE):
+   For each data in the cell, (data1 - average of that cell)^2 + (data2 - average of that cell)^2 + ... + (data - average of that cell)^2
+   Total of all (SSTotal): Total of SSEs
+   SSInteraction = SSTotal – SSA – SSB – SSE
+   dfA = Number of rows - 1
+   dfB = Number of columns - 1
+   dfinteraction = dfA * dfB
+   dfwithin = Total samples - cells
+   dfTotal= dfA + dfB + dfI + dfW
+4. Mean squares (MS):
+   MSA = SSA/dfA
+   MSB = SSB/dfB
+   MSAB = SSI/dfI
+   MSE = SSE/dfW
+5. FFF-statistics:
+   FA = MSA/MSE
+   FB = MSB/MSE
+   FAB = MSAB/MSE
+6. Critical values:
+   A use FA and df (dfA, dfW)
+   B use FB and df (dfB, dfW)
+   Interaction use FAB and df (dfI, dfW)
+7. If F > critical, reject null
+   
+THE END GOOD LUCK HAVE FUN
